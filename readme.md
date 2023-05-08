@@ -72,7 +72,12 @@ The analytics company's server could communicate directly with the servers of th
 
 IP address and the browser's user-agent (which typically includes information about the hardware and operating system) string can be used as an identifier.
 
-They can use JavaScript fingerprinting techniques to attempt to determine browser type, browser features, and which browser extensions are installed. If this browser fingerprint is fairly unique, it can be used to recognize you. Even if it is not especially unique, it can be combined with your IP address to improve recognition. 
+ISPs and VPN services are uniquely situated in the network to identify you and monitor your web browsing. Also, "web accelerator" services that claim to speed up web browsing over slower connections often require users to install their software and use their web proxies, which allows them to identify you and monitor your web browsing.
+
+Early mobile phone web browsers that made all web requests through a special gateway owned by the phone company sometimes added a unique device identifier to HTTP request headers. Unfortunately, this sometimes included your phone number. This had the effect of sending your phone number to every website you visited.
+⚠️TODO: add links to examples
+
+Various techniques can be used to attempt to describe the user's machine machine, operating system, browser type, and extensions. If this description is fairly unique, it can be used to recognize you. This is called fingerprinting and is described in its own section below.
 
 # Profiling Users
 
@@ -83,3 +88,28 @@ If tracker/analytics JavaScript is in the page or in an iframe the page loads, t
 When multiple websites use the same tracking service, that third party gets to see that you visit those websites and can build a personality profile of you from which websites it knows you do and don't visit. 
 
 If you are logged into any of those sites and they share your personal information with the tracking company, then the tracking company can use other sources to "enrich" your profile by buying data like your phone number, address, etc. from data brokers.
+
+When information about your machine or browser is not sufficiently unique to identify you (see the Fingerprinting section, below), it can still be used to categorize you by statistical association with behaviors. For example, users of the absolute latest iPhones may be more likely to buy at higher prices than users of older iPhones or an older or low-end Android device.
+
+If they can build a list of devices associated with your home's IP address, they can estimate how many people are using how many devices in a given household. This is potentially valuable information about lifestyle and income. The tracker that has the best visibility of this sort of information is your ISP.
+
+# Fingerprinting
+
+## Network-based Fingerprinting
+
+Other then the most obvious example of your IP address, the behavior of your network traffic can reveal information about your operating system and web browser. The mathematical patterns (or lack thereof) in your TCP packet sequence numbers can sometimes be used to recognize the fact that you're running (for example) an old Windows XP box or a certain range of Linux versions. The quirks of your SSL/TLS handshake can show which cryptographic ciphers your browser supports. If TCP sequences indicate Linux system but TLS handshake indicates Windows, then it's reasonable to say you might be running a Windows box through a Linux web proxy. 
+⚠️TODO: add links to more information about network-based fingerprinting
+
+## Client-side Browser Fingerprinting
+
+By client-side, I mean that a web page, web page content (e.g. style sheets), or code loaded on your machine as part of a web page.
+
+They can use JavaScript fingerprinting techniques to attempt to determine browser type, browser features, and which browser extensions are installed. If this browser fingerprint is fairly unique, it can be used to recognize you. Even if it is not especially unique, it can be combined with your IP address to improve recognition. 
+
+CSS is a declarative programming language used for telling the browser how the content of a page should look. It has also been used to detect extract information from a rendered page and send it back to the server. I don't remember for sure whether this has been used for extracting browsing history but it has been used to send text a user types into a text field. 
+⚠️TODO: find examples of CSS abuse
+
+Here are links to a few examples of client-side browser fingerprinting:
+* [Fingerprinting Visit History](https://privacycheck.sec.lrz.de/active/fp_vh/fp_visit_history.html)
+* [Intro to Chrome addons hacking: fingerprinting](http://blog.kotowicz.net/2012/02/intro-to-chrome-addons-hacking.html)
+* [Dirty Browser Enumeration Tricks – Using chrome:// and about: to Detect Firefox & Addons](https://thehackerblog.com/dirty-browser-enumeration-tricks-using-chrome-and-about-to-detect-firefox-plugins/)
