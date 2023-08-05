@@ -113,3 +113,7 @@ Here are links to a few examples of client-side browser fingerprinting:
 * [Fingerprinting Visit History](https://privacycheck.sec.lrz.de/active/fp_vh/fp_visit_history.html)
 * [Intro to Chrome addons hacking: fingerprinting](http://blog.kotowicz.net/2012/02/intro-to-chrome-addons-hacking.html)
 * [Dirty Browser Enumeration Tricks – Using chrome:// and about: to Detect Firefox & Addons](https://thehackerblog.com/dirty-browser-enumeration-tricks-using-chrome-and-about-to-detect-firefox-plugins/)
+* [Browser Fingerprinting: A survey](https://arxiv.org/pdf/1905.01051.pdf)
+
+Anti-fingerprinting:
+* [Browser fingerprinting and JShelter](https://jshelter.org/fingerprinting/)
